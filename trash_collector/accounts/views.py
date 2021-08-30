@@ -16,7 +16,7 @@ class RegisterView(generic.CreateView):
     """Allows user to register with the custom form we created"""
     form_class = CustomUserForm
     success_url = reverse_lazy('login')
-    template_name = 'registration.html'
+    template_name = 'registration/register.html'
 
 # def register(request):
 #     if request.method == "POST":

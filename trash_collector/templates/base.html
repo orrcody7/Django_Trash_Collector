@@ -9,8 +9,10 @@
   {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
     <p>Customer Navbar</p>
+    {# insert customer specific navbar here #}
     {% elif group.name == "Employees" %}
     <p>Employee Navbar</p>
+    {# insert employee specific navbar here #}
     {% endif %}
   {% endfor %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>

@@ -17,7 +17,7 @@ def index(request):
         logged_in_customer = Customer.objects.get(user=user)
     except:
         # TODO: Redirect the user to a 'create' function to finish the registration process if no customer record found
-        return HttpResponseRedirect(reverse('accounts:registration'))
+        return HttpResponseRedirect(reverse('customers:create'))
 
     # It will be necessary while creating a Customer/Employee to assign request.user as the user foreign key
 

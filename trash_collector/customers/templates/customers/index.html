@@ -8,12 +8,6 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Customer {{ user.username }}!
-{% comment %} <body>
-    <button class="tablink" onclick="openPage('customer_edit', this)" id="defaultOpen">Change Pickup Day</button>
-    <button class="tablink" onclick="openPage('customer_edit', this)" id="defaultOpen">Suspend My Account</button>
-    <button class="tablink" onclick="openPage('account_info', this)" id="defaultOpen">Account Info</button>
-</body> {% endcomment %}
-    {% comment %} where we enter the navbar coding, format the page with whatever information or details we want to display to the logged in customer {% endcomment %}
   {% else %}
     <p>You are at the customer index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
