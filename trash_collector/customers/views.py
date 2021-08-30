@@ -36,3 +36,43 @@ def create(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
+
+def edit(request):
+    edited_customer = Customer.objects.get()
+    if request.method == "POST":
+        user = request.user
+        edited_customer.address = request.POST.get('address')
+        edited_customer.zip_code = request.POST.get('zip_code')
+        edited_customer.weekly_pickup_day = request.POST.get('weekly_pickup_day')
+        edited_customer.one_time_pickup = request.POST.get('one_time_pickup')
+        edited_customer.suspend_start = request.POST.get('suspend_start')
+        edited_customer.suspend_end = request.POST.get('suspend_end')
+        edited_customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        context = {
+            'edited_customer': edited_customer
+        }
+        return render(request, 'customers/edit.html', context)
+
+def display_account(request):
+    user = request.user
+    customers = Customer.objects.get()
+    context = {
+        'customers': customers
+    }
+    return render(request, 'customers/display_account.html', context)
+
+def suspend(request):
+    suspend_dates = Customer.objects.get()
+    if request.method == "POST":
+        user = request.user
+        suspend_dates.suspend_start = request.POST.get('suspend_start')
+        suspend_dates.suspend_end = request.POST.get('suspend_end')
+        suspend_dates.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        context = {
+            'suspend_dates':suspend_dates
+        }
+        return render(request, 'customers/suspend.html', context)

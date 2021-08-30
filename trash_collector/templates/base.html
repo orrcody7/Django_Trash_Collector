@@ -8,8 +8,14 @@
 {% if user.is_authenticated %}
   {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
-    <p>Customer Navbar</p>
-    {# insert customer specific navbar here #}
+    <table>
+    <tr>
+    <td><a href="{% url 'customers:edit' %}">Change My Pickup Day</a></td>
+    <td><a href="{% url 'customers:edit' %}">Request One-Time Pickup</a></td>
+    <td><a href="{% url 'customers:suspend' %}">Suspend My Account</a></td>
+    <td><a href="{% url 'customers:display_account' %}">Account Info</a></td>
+    </tr>
+    </table>
     {% elif group.name == "Employees" %}
     <p>Employee Navbar</p>
     {# insert employee specific navbar here #}

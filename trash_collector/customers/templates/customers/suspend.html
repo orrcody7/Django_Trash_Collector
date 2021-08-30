@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Suspend Dates {% endblock %}
+
+{% block header %} Enter Suspend Dates {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  Hello {{ user.username }}!
+{% else %}
+Please enter your dates below
+{% endif %}
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% endblock %}
+
+{# This is the home page that allows a logged out user to register or log in #}

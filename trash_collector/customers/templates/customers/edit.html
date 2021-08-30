@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Customer Account {% endblock %}
+
+{% block header %} Edit Account {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  Hello {{ user.username }}!
+{% else %}
+
+{% endif %}
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% endblock %}
+
+{# This is the home page that allows a logged out user to register or log in #}
