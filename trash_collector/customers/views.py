@@ -17,7 +17,7 @@ def index(request):
         logged_in_customer = Customer.objects.get(user=user)
     except:
         # TODO: Redirect the user to a 'create' function to finish the registration process if no customer record found
-        pass
+        return HttpResponseRedirect(reverse('accounts:registration'))
 
     # It will be necessary while creating a Customer/Employee to assign request.user as the user foreign key
 
@@ -27,10 +27,11 @@ def index(request):
 def create(request):
     if request.method == "POST":
         name = request.POST.get('name')
+        user = request.user
         address = request.POST.get('address')
         zip_code = request.POST.get('zip_code')
         weekly_pickup_day = request.POST.get('weekly_pickup_day')
-        new_customer = Customer(name = name, address = address, zip_code = zip_code, weekly_pickup_day = weekly_pickup_day)
+        new_customer = Customer(name=name, user=user, address=address, zip_code=zip_code, weekly_pickup_day=weekly_pickup_day)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
