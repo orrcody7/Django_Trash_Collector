@@ -24,8 +24,17 @@
         </li>
       </ul>
     {% elif group.name == "Employees" %}
-    <p>Employee Navbar</p>
-    {# insert employee specific navbar here #}
+        <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'employees:index' %}">Daily View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'employees:route' %}">Change Route</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'employees:account_info' %}">Account Info</a>
+        </li>
+      </ul>
     {% endif %}
   {% endfor %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>
