@@ -6,45 +6,47 @@
 {% block header %} Customer Account Home {% endblock %}
 
 {% block content %}
-<style>
-    table, th, td {
-        border: 1px solid black;
-    }
-</style>
 
-<h1 align="center">Hello {{ user.name }}!</h1>
-<table align="center">
-        <th width="100%"><h2>{{user.name}} Account Info</h2></th>
+<table class="table table-striped">
+  <thead class="table-light"><h2>Account Information</h2></thead>
+  <tbody>
     <tr>
-        <td align="center">Address</td>
-        <td align="center">{{user.address}}</td>
+        <td>Address</td>
+        <td>{{customers.address}}</td>
+    </tr>
+    <tr> 
+        <td>Zip Code</td>
+        <td>{{customers.zip_code}}</td>
     </tr>
     <tr>
-        <td align="center">Zip Code</td>
-        <td align="center">{{user.zip_code}}</td>
+        <td>Balance</td>
+        <td>{{customers.balance}}</td>
     </tr>
-    <tr>
-        <td align="center">Balance</td>
-        <td align="center">{{user.balance}}</td>
-    </tr>
-    <tr>
-        <td align="center">Weekly Pickup Day</td>
-        <td align="center">{{user.weekly_pickup_day}}</td>
-    </tr>
-    <tr>
-        <td align="center">One-Time Pickup</td>
-        <td align="center">{{user.one_time_pickup}}</td>
-    </tr>
-    <tr>
-        <td align="center">Suspend Start</td>
-        <td align="center">{{user.suspend_start}}</td>
-    </tr>
-    <tr>
-        <td align="center">Suspend End</td>
-        <td align="center">{{user.suspend_end}}</td>
-    </tr>
-    </table>
 
-<p align="center"><a href="{% url 'customers:index' %}">Back</a></p>
+    <tr>
+        <td>Balance</td>
+        <td>{{customers.balance}}</td>
+    </tr>
+    <tr>
+        <td>Weekly Pickup Day</td>
+        <td>{{customers.weekly_pickup_day}}</td>
+    </tr>
+    <tr>
+        <td>One-Time Pickup</td>
+        <td>{{customers.one_time_pickup}}</td>
+    </tr>
+    <tr>
+        <td>Suspend Start</td>
+        <td>{{customers.suspend_start}}</td>
+    </tr>
+    <tr>
+        <td>Suspend End</td>
+        <td>{{customers.suspend_end}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a href="{% url 'customers:index' %}">Back</a>
 
 {% endblock %}

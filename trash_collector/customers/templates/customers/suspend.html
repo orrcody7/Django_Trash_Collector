@@ -7,9 +7,13 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-  Hello {{ user.username }}!
+ <h2>Hello {{ user.username }}!</h2><br />
+<p>Please enter your dates below</p>
+<form align="center">
+
+</form>
 {% else %}
-Please enter your dates below
+  
 {% endif %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% endblock %}

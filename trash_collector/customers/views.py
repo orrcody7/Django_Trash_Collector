@@ -38,9 +38,8 @@ def create(request):
         return render(request, 'customers/create.html')
 
 def edit(request):
-    edited_customer = Customer.objects.get()
+    edited_customer = Customer.objects.get(user=request.user)
     if request.method == "POST":
-        user = request.user
         edited_customer.address = request.POST.get('address')
         edited_customer.zip_code = request.POST.get('zip_code')
         edited_customer.weekly_pickup_day = request.POST.get('weekly_pickup_day')
@@ -56,17 +55,15 @@ def edit(request):
         return render(request, 'customers/edit.html', context)
 
 def display_account(request):
-    user = request.user
-    customers = Customer.objects.get()
+    customers = Customer.objects.get(user=request.user)
     context = {
         'customers': customers
     }
     return render(request, 'customers/display_account.html', context)
 
 def suspend(request):
-    suspend_dates = Customer.objects.get()
+    suspend_dates = Customer.objects.get(user=request.user)
     if request.method == "POST":
-        user = request.user
         suspend_dates.suspend_start = request.POST.get('suspend_start')
         suspend_dates.suspend_end = request.POST.get('suspend_end')
         suspend_dates.save()
