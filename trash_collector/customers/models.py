@@ -6,7 +6,7 @@ class Customer(models.Model):
     user = models.ForeignKey('accounts.User', blank=True, null=True, on_delete=models.CASCADE)
     address = models.CharField(max_length=150, default=None)
     zip_code = models.CharField(max_length=10, default=None)
-    balance = models.IntegerField(max_length=50, blank=True, default=0, null=True)
+    balance = models.IntegerField(blank=True, default=0, null=True)
     weekly_pickup_day = models.CharField(max_length=50, default=None)
     one_time_pickup = models.DateField(max_length=50, blank = True, default=None, null=True)
     suspend_start = models.DateField(max_length=50, blank = True, default=None, null=True)
