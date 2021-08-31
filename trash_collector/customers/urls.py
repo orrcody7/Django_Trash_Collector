@@ -11,5 +11,6 @@ urlpatterns = [
     path('create/', views.create, name="create"),
     path('edit/', views.edit, name="edit"),
     path('suspend/', views.suspend, name="suspend"),
-    path('display_account/', views.display_account, name="display_account")
+    path('display_account/', views.display_account, name="display_account"),
+    path('request/', views.customer_request, name="customer_request")
 ]

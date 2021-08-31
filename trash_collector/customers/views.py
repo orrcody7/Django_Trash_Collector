@@ -67,9 +67,21 @@ def suspend(request):
         suspend_dates.suspend_start = request.POST.get('suspend_start')
         suspend_dates.suspend_end = request.POST.get('suspend_end')
         suspend_dates.save()
-        return HttpResponseRedirect(reverse('customers:index'))
+        return HttpResponseRedirect(reverse('customers:display_account'))
     else:
         context = {
             'suspend_dates':suspend_dates
         }
         return render(request, 'customers/suspend.html', context)
+
+def customer_request(request):
+    single_pickup = Customer.objects.get(user=request.user)
+    if request.method == "POST":
+        single_pickup.one_time_pickup = request.POST.get('one_time_pickup')
+        single_pickup.save()
+        return HttpResponseRedirect(reverse('customers:display_account'))
+    else:
+        context = {
+            'single_pickup':single_pickup
+        }
+        return render(request, 'customers/customer_request.html', context)
