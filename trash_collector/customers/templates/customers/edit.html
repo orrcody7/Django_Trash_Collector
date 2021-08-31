@@ -2,14 +2,21 @@
 
 {% block title %} Edit Customer Account {% endblock %}
 
-{% block header %} Edit Account {% endblock %}
+{% block header %}<h1> Edit Account </h1>{% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
-  Hello {{ customer.name }}!
-  <form action=""
+  <form action="{% url 'customers:edit' %}" method="post">
+    {% csrf_token %}
+    Address: <input type="text" name="address" id="address" value="{{edited_customer.address}}"><br />
+    Zip Code: <input type="text" name="zip_code" id="zip_code" value="{{edited_customer.zip_code}}"><br />
+    Weekly Pickup Day: <input type="text" name="weekly_pickup_day" id="weekly_pickup_day" value="{{edited_customer.weekly_pickup_day}}"><br />
+    <input type="submit" value="Edit">
+  </form>
 {% else %}
+  <h1> Sorry! Your account has not been authenticated. Please sign up or try again.</h1>
+  <a href="{% url 'customers:create' %}">Go Back</a>
 
 {% endif %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>

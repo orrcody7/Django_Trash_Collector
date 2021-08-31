@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Pickup Request {% endblock %}
+
+{% block header %} One-Time Pickup Request {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'customers:customer_request' %}" method="post">
+{% csrf_token %}
+    <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="one_time_pickup" name="one_time_pickup" />
+        <label for="one_time_pickup">Date:</label>
+    </div>
+    <input type="submit" value="Schedule" />
+</form>
+
+{% endblock %}

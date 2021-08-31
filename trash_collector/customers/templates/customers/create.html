@@ -2,19 +2,29 @@
 
 {% block title %} Create User Account {% endblock %}
 
-{% block header %} Create User Account {% endblock %}
+{% block header %}<h1 align="center">Create User Account</h1>{% endblock %}
 
 {% block content %}
-<h1> Please fill out the following form </h1>
-<form action="{% url 'customers:create' %}" method="post">
+<h1 align="center"> Please fill out the following information </h1>
+    <form action="{% url 'customers:create' %}" method="post">
     {% csrf_token %}
-    Name: <input type="text" name="name" id="name"><br />
-    Address: <input type="text" name="address" id="address"><br />
-    Zip Code: <input type="text" name="zip_code" id = "zip_code"><br />
-    Weekly Pick-up Day: <input type="text" name="weekly_pickup_day" id="weekly_pickup_day"><br />
-    <input type="submit" value="Create">
-</form>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" name="name" />
+            <label for="name">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="address" name="address" />
+            <label for="address">Address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="zip_code" name="zip_code" />
+            <label for="zip_code">Zip Code</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="weekly_pickup_day" name="weekly_pickup_day" />
+            <label for="weekly_pickup_day">Desired Weekly Pickup Day</label>
+        </div>
+        <input type="submit" value="Finish" />
+    </form>
 {% endblock %}
-
-
     

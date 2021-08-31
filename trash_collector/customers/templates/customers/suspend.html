@@ -6,15 +6,20 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
- <h2>Hello {{ user.username }}!</h2><br />
-<p>Please enter your dates below</p>
-<form align="center">
-
+<h1>Please enter your dates below</h1>
+<form action="{% url 'customers:suspend' %}" method="post">
+  {% csrf_token %}
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="suspend_start" name="suspend_start" />
+        <label for="suspend_start">Start Date:</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="suspend_end" name="suspend_end" />
+        <label for="suspend_end">End Date:</label>
+      </div>
+      <input type="submit" value="Schedule" />
 </form>
-{% else %}
-  
-{% endif %}
+
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% endblock %}
 
