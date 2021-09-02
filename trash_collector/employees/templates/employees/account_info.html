@@ -2,17 +2,19 @@
 
 {% block title %} Employee Account Info {% endblock %}
 
-{% block header %} Employee Account {% endblock %}
+{% block header %}<h2>Account Information</h2>{% endblock %}
 
 {% block content %}
 
 <table class = "table table-striped">
-    <thead class = "table-light"><h2>Account Information</h2></thead>
     <tbody>
         <tr>
             <td>Zip Code</td>
             <td>{{employees.zip_code}}</td>
         </tr>
+        <tr>
+            <td>Zip Code Responsibility</td>
+            <td>{{employees.zip_code}}</td>
     </tbody>
 </table> 
   

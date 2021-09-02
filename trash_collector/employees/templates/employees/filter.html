@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Employee Filter Home {% endblock %}
+
+{% block header %}  {% endblock %}
+
+{% block content %}
+<h1>Today's pickups</h1>
+
+
+{% for customer in all_customers %}
+    {{customer.name}}
+{% endfor %}
+
+
+{% endblock %}

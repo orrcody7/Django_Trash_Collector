@@ -2,14 +2,15 @@
 
 {% block title %} Employee Route {% endblock %}
 
-{% block header %} Route Information {% endblock %}
+{% block header %}{% endblock %}
 
 {% block content %}
 
-<h1>Hello {{ user.username }}!</h1><br />
-
-<h2>Based on your zip code, you have been assigned the following route:</h2><br />
-
-
+<p>If you would like to change your area of responsibility, please enter your desired location below.</p>
+<form action="{% url 'employees:route' %}" method="post">
+    {% csrf_token %}
+    Zip Code: <input type="text" name="zip_code" value="{{change_route.zip_code}}"><br />
+    <input type="submit" value="Change">
+</form>
 
 {% endblock %}
