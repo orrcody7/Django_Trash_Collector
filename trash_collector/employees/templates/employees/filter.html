@@ -7,10 +7,14 @@
 {% block content %}
 <h1>Today's pickups</h1>
 
+{% if customer %}
 
 {% for customer in all_customers %}
     {{customer.name}}
 {% endfor %}
 
+{% else %}
+Not working
 
+{% endif %}
 {% endblock %}
